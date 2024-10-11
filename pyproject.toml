@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-claude"
+description = "A set of custom nodes that are using Anthropic's Claude models for describing images and transforming texts."
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = ["anthropic>=0.36.0", "pillow>=10.2.0"]
+
+[project.urls]
+Repository = "https://github.com/tkreuziger/comfyui-claude"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "comfyui-claude"
+Icon = ""
