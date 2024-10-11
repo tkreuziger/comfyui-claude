@@ -1,0 +1,2 @@
+anthropic>=0.36.0
+pillow>=10.2.0
