@@ -1,7 +1,7 @@
 import base64
 import anthropic
-import torch
-from torchvision import transforms
+from PIL import Image
+import io
 
 models = [
     'claude-3-haiku-20240307',
@@ -33,9 +33,12 @@ def run_prompt(prompt: str, system_prompt: str, model: str, api_key: str):
 
 def describe_image(image, prompt: str, system_prompt: str, model: str, api_key: str):
     try:
-        transform = transforms.ToPILImage()
-        pil_image = transform(torch.squeeze(image))
-        img_data = pil_image.tobytes()
+        image_tensor = image.squeeze(0) * 255
+        image_array = image_tensor.byte().numpy()
+        image = Image.fromarray(image_array)
+        buffered = io.BytesIO()
+        image.save(buffered, format="JPEG")
+        img_data = buffered.getvalue()
 
         client = anthropic.Anthropic(api_key=api_key)
         message = client.messages.create(
@@ -43,17 +46,23 @@ def describe_image(image, prompt: str, system_prompt: str, model: str, api_key: 
             max_tokens=1024,
             system=system_prompt,
             messages=[
-                {'role': 'user', 'content': [
-                    { # type: ignore
-                        'type': 'base64',
-                        'media_type': 'image/jpeg',
-                        'data': base64.b64encode(img_data).decode("utf-8"),
-                    },
-                    {
-                        'type': 'text',
-                        'text': prompt,
-                    }
-                ]},
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "image",
+                            "source": {
+                                "type": "base64",
+                                "media_type": 'image/jpeg',
+                                'data': base64.b64encode(img_data).decode("utf-8"),
+                            },
+                        },
+                        {
+                            "type": "text",
+                            "text": prompt,
+                        }
+                    ],
+                }
             ]
         )
 
