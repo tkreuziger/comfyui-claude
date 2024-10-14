@@ -2,6 +2,7 @@ import base64
 import anthropic
 from PIL import Image
 import io
+import logging
 
 models = [
     'claude-3-haiku-20240307',
@@ -26,7 +27,7 @@ def run_prompt(prompt: str, system_prompt: str, model: str, api_key: str):
             return message.content[0].text # type: ignore
 
     except Exception:
-        print('Something went wrong.')
+        logging.exception('Something went wrong.')
 
     return ''
 
@@ -70,7 +71,7 @@ def describe_image(image, prompt: str, system_prompt: str, model: str, api_key: 
             return message.content[0].text # type: ignore
 
     except Exception:
-        print('Something went wrong.')
+        logging.exception('Something went wrong.')
 
     return ''
 
