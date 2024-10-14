@@ -6,7 +6,7 @@ A set of custom nodes that are using Anthropic's Claude models for describing im
 Clone the repository into your custom nodes folder and install the requirements:
 
 ```bash
-git clone git@github.com:tkreuziger/comfyui-claude.git ./ComfyUI/custom_nodes/comfyui-claude
+git clone https://github.com/tkreuziger/comfyui-claude.git ./ComfyUI/custom_nodes/comfyui-claude
 python3 -m pip install -r ./ComfyUI/custom_nodes/comfyui-claude/requirements.txt
 ```
 
