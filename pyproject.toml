@@ -86,6 +86,8 @@ ignore = [
     "PT023",
     "Q002",
     "D300",
+    "PLR0913",
+    "N999",
 ]
 fixable = ["ALL"]
 unfixable = []
@@ -98,6 +100,7 @@ unfixable = []
 "**/__init__.py" = [
     "F401",
     "F403",
+    "D104",
 ]
 
 [tool.ruff.lint.pyupgrade]
