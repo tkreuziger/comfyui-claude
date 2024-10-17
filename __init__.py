@@ -1,5 +1,4 @@
-from .nodes.nodes import DescribeImage, CombineTexts, TransformText
-
+from .nodes.nodes import CombineTexts, DescribeImage, TransformText
 
 NODE_CLASS_MAPPINGS = {
     'Describe Image': DescribeImage,
