@@ -24,11 +24,7 @@ lint = [
 dev = [
     "tox>=4.5,<5.0",
     "pip-tools>=7.4.1,<8.0",
-
-    "comfyui_claude[format]",
     "comfyui_claude[lint]",
-    "comfyui_claude[test]",
-    "comfyui_claude[build]",
 ]
 
 # ------------------------------------------------------------------------------
