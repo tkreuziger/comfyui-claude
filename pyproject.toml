@@ -1,15 +1,135 @@
 [project]
-name = "comfyui-claude"
+name = "comfyui_claude"
 description = "A set of custom nodes that are using Anthropic's Claude models for describing images and transforming texts."
-version = "1.0.0"
+version = "1.1.0"
+readme = "README.md"
 license = {file = "LICENSE"}
-dependencies = ["anthropic>=0.36.0", "pillow>=10.2.0"]
+authors = [{name = "Tristan Kreuziger", email = "info@tkreuziger.com"}]
+dependencies = [
+    "anthropic>=0.36.0",
+    "pillow>=10.2.0"
+]
 
 [project.urls]
 Repository = "https://github.com/tkreuziger/comfyui-claude"
-#  Used by Comfy Registry https://comfyregistry.org
+Homepage = "https://github.com/tkreuziger/comfyui-claude"
+Issues = "https://github.com/tkreuziger/comfyui-claude/issues"
+
+[project.optional-dependencies]
+lint = [
+    "ruff>=0.5.6,<1.0",
+    "mypy-extensions>=1.0.0",
+    "mypy>=1.11.1,<2.0",
+]
+dev = [
+    "tox>=4.5,<5.0",
+    "pip-tools>=7.4.1,<8.0",
+    "twine>=5.1.1,<6.0",
+
+    "comfyui_claude[format]",
+    "comfyui_claude[lint]",
+    "comfyui_claude[test]",
+    "comfyui_claude[build]",
+]
+
+# ------------------------------------------------------------------------------
 
 [tool.comfy]
 PublisherId = "tkreuziger"
 DisplayName = "ComfyUI Claude"
 Icon = ""
+
+# ------------------------------------------------------------------------------
+
+[tool.tox]
+envlist = [
+    "format",
+    "lint",
+    "test",
+]
+isolated_build = true
+parallel = "auto"
+
+[tool.tox.env_run_base]
+basepython = ["py310"]
+skip_install = true
+
+[tool.tox.env.format]
+description = "Format code with ruff."
+extras = "lint"
+allowlist_externals = ["ruff"]
+commands = [
+    ["ruff", "format", "src"],
+]
+
+[tool.tox.env.lint]
+description = "Run static checkers."
+extras = "lint"
+allowlist_externals = ["ruff", "mypy"]
+commands = [
+    ["ruff", "check", "src", "--fix"],
+    ["mypy", "src"],
+]
+
+# ------------------------------------------------------------------------------
+
+[tool.ruff]
+line-length = 80
+indent-width = 4
+src = ["src"]
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "COM812",
+    "ISC001",
+    "ANN101",
+    "PT001",
+    "PT004",
+    "PT005",
+    "PT023",
+    "Q002",
+    "D300",
+]
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = [
+    "S101",
+    "D103",
+]
+"**/__init__.py" = [
+    "F401",
+    "F403",
+]
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "single"
+docstring-code-format = true
+docstring-code-line-length = 80
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+# ------------------------------------------------------------------------------
+
+[tool.mypy]
+mypy_path = "src"
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+warn_unused_ignores = false
+strict = true
+exclude = [
+    ".git/",
+    "venv/",
+]
+
