@@ -54,7 +54,7 @@ description = "Format code with ruff."
 extras = "lint"
 allowlist_externals = ["ruff"]
 commands = [
-    ["ruff", "format", "src"],
+    ["ruff", "format", "."],
 ]
 
 [tool.tox.env.lint]
@@ -62,8 +62,8 @@ description = "Run static checkers."
 extras = "lint"
 allowlist_externals = ["ruff", "mypy"]
 commands = [
-    ["ruff", "check", "src", "--fix"],
-    ["mypy", "src"],
+    ["ruff", "check", ".", "--fix"],
+    ["mypy", "."],
 ]
 
 # ------------------------------------------------------------------------------
