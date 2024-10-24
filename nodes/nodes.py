@@ -31,7 +31,7 @@ class DescribeImage(ComfyUINode):
 
     def excecute(
         self,
-        image: 'torch.Tensor',  # noqa: F821
+        image: 'torch.Tensor',  # type: ignore[name-defined]  # noqa: F821
         model: str,
         api_key: str,
         system_prompt: str,

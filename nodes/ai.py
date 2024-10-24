@@ -49,7 +49,7 @@ def run_prompt(
 
 
 def describe_image(
-    image: 'torch.Tensor',  # noqa: F821
+    image: 'torch.Tensor',  # type: ignore[name-defined]  # noqa: F821
     prompt: str,
     system_prompt: str,
     model: str,
