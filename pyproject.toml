@@ -7,7 +7,8 @@ license = {file = "LICENSE"}
 authors = [{name = "Tristan Kreuziger", email = "info@tkreuziger.com"}]
 dependencies = [
     "anthropic>=0.36.0",
-    "pillow>=10.2.0"
+    "pillow>=10.2.0",
+    "comfyui-types>=1.1.0",
 ]
 
 [project.urls]
@@ -40,7 +41,6 @@ Icon = ""
 envlist = [
     "format",
     "lint",
-    "test",
 ]
 isolated_build = true
 parallel = "auto"
@@ -51,7 +51,7 @@ skip_install = true
 
 [tool.tox.env.format]
 description = "Format code with ruff."
-extras = "lint"
+extras = ["lint"]
 allowlist_externals = ["ruff"]
 commands = [
     ["ruff", "format", "."],
@@ -59,7 +59,7 @@ commands = [
 
 [tool.tox.env.lint]
 description = "Run static checkers."
-extras = "lint"
+extras = ["lint"]
 allowlist_externals = ["ruff", "mypy"]
 commands = [
     ["ruff", "check", ".", "--fix"],
@@ -130,4 +130,3 @@ exclude = [
     ".git/",
     "venv/",
 ]
-
