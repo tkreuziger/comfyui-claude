@@ -8,7 +8,7 @@ authors = [{name = "Tristan Kreuziger", email = "info@tkreuziger.com"}]
 dependencies = [
     "anthropic>=0.36.0",
     "pillow>=10.2.0",
-    "comfyui-types>=1.1.0",
+    "comfyui-types>=1.3.3",
 ]
 
 [project.urls]
