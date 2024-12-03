@@ -3,7 +3,9 @@ A set of custom nodes that are using Anthropic's Claude models for describing im
 
 ## Setup
 
-Clone the repository into your custom nodes folder and install the requirements:
+You can find the node in the ComfyUI package registry via its name "ComfyUI
+Claude" and install it from there. Alternativeyl, clone the repository into your
+custom nodes folder and install the requirements:
 
 ```bash
 git clone https://github.com/tkreuziger/comfyui-claude.git ./ComfyUI/custom_nodes/comfyui-claude
