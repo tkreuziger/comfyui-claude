@@ -1,7 +1,7 @@
 [project]
 name = "comfyui_claude"
 description = "A set of custom nodes that are using Anthropic's Claude models for describing images and transforming texts."
-version = "1.2.0"
+version = "1.2.1"
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [{name = "Tristan Kreuziger", email = "info@tkreuziger.com"}]
