@@ -18,6 +18,8 @@ prompt without redundancies.'
 class DescribeImage(ComfyUINode):
     """Describe an image."""
 
+    category = 'Claude'
+    
     image = ImageInput()
     model = ChoiceInput(choices=models)
     api_key = StringInput()
@@ -29,7 +31,7 @@ class DescribeImage(ComfyUINode):
 
     description = StringOutput()
 
-    def excecute(
+    def execute(
         self,
         image: 'torch.Tensor',  # type: ignore[name-defined]  # noqa: F821
         model: str,
@@ -55,6 +57,8 @@ class DescribeImage(ComfyUINode):
 class CombineTexts(ComfyUINode):
     """Combine two texts."""
 
+    category = 'Claude'
+
     text_1 = StringInput(multiline=True)
     text_1_prefix = StringInput(default='1')
     text_2 = StringInput(multiline=True)
@@ -69,7 +73,7 @@ class CombineTexts(ComfyUINode):
 
     combined_texts = StringOutput()
 
-    def excecute(
+    def execute(
         self,
         text_1: str,
         text_1_prefix: str,
@@ -104,6 +108,8 @@ class CombineTexts(ComfyUINode):
 class TransformText(ComfyUINode):
     """Transform text."""
 
+    category = 'Claude'
+
     text = StringInput(multiline=True)
     model = ChoiceInput(choices=models)
     api_key = StringInput()
@@ -115,7 +121,7 @@ class TransformText(ComfyUINode):
 
     transformed_text = StringOutput()
 
-    def excecute(
+    def execute(
         self,
         text: str,
         model: str,
