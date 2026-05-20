@@ -8,13 +8,15 @@ import anthropic
 from PIL import Image
 
 models = [
-    'claude-3-5-haiku-latest',
-    'claude-3-5-sonnet-latest',
-    'claude-3-opus-latest',
-    'claude-3-haiku-20240307',
-    'claude-3-5-haiku-20241022',
-    'claude-3-5-sonnet-20241022',
-    'claude-3-opus-20240229',
+    'claude-opus-4-6',
+    'claude-sonnet-4-5',
+    'claude-opus-4-5',
+    'claude-opus-4-1',
+    'claude-sonnet-4-0',
+    'claude-opus-4-0',
+    'claude-opus-4-7',
+    'claude-sonnet-4-6',
+    'claude-haiku-4-5',
 ]
 
 
